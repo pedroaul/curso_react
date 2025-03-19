@@ -7,7 +7,7 @@ function App() {
   
   return (
     <div>
-      <h1>Gerenciador de Tarefas</h1>
+      <h1 className="font-medium text-red-700">Gerenciador de Tarefas</h1>
       <AddTask />
       <Task />
     </div>
