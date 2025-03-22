@@ -33,12 +33,18 @@ function onTaskClick (taskId) {
   setTasks(newTasks);
 }
 
+function deleteOnClick (taskDelId) {
+  const delTask = tasks.filter(task => task.id != taskDelId);
+  setTasks(delTask);  
+  };
+
+
   return (
-    <div className="w-screen h-screen bg-blue-300 flex justify-center p-6">
-      <div className="w-[500px]"> 
-        <h1 className="text-3xl font-bold text-slate-900">Gerenciador de Tarefas</h1>
+    <div className="w-screen h-screen bg-red-700 flex justify-center p-6">
+      <div className="w-[500px] space-y-4"> 
+        <h1 className="text-3xl font-extrabold text-center p-4 text-white">Gerenciador de Tarefas</h1>
         <AddTask />
-        <Task tasks={tasks} onTaskClick={onTaskClick}/>
+        <Task tasks={tasks} onTaskClick={onTaskClick} deleteOnClick={deleteOnClick}/>
       </div>
     </div>
   );
