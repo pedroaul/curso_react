@@ -1,8 +1,15 @@
 import { ChevronRightIcon, TrashIcon } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 // QUANDO ALTERO A VARIAVEL, EU PRECISO ALTERAR A INTERFACE, CRIO UM STATE
 
 function Tasks({tasks, onTaskClick, deleteOnClick}) {
+    const navigate = useNavigate();
+   
+    function onSeetDetailsClick(task) {
+        navigate(`/task?title=${task.title}&description=${task.description}`)
+    }
+
     return(
         <ul className="space-y-4 p-6 bg-slate-200 rounded-md shadow">
             {tasks.map((task) => (
@@ -11,7 +18,7 @@ function Tasks({tasks, onTaskClick, deleteOnClick}) {
                     {task.title}
                     {/* {task.isCompleted ? "COMPLETE": "IMCOMPLETE"}  */}
                 </button>
-                <button className="bg-slate-400 p-2 rounded-md text-white">
+                <button onClick={() => onSeetDetailsClick(task)} className="bg-slate-400 p-2 rounded-md text-white">
                     <ChevronRightIcon />
                 </button>
                 <button onClick={() => deleteOnClick(task.id)} className="bg-slate-400 p-2 rounded-md text-white">
