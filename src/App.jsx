@@ -12,6 +12,23 @@ function App() {
     localStorage.setItem("tasks", JSON.stringify(tasks))
   }, [tasks]);
 
+  useEffect(() => {
+    // CHAMAR A API
+    async function fetchTasks() {
+      const response = await fetch('https://jsonplaceholder.typicode.com/todos/?_limit=10', {
+        method: "GET",
+      }
+    );
+      // PEGAR OS DADOS QUE ELA RETORNA
+      const data = await response.json();
+
+      // ARMAZENAR, PERMITIR DADOS DA API
+      setTasks(data);
+    };
+    // POSSO CHAMAR UMA API PARA PEGAR AS TAREFAS
+    // fetchTasks();
+  }, []);
+
 function onTaskClick (taskId) {
   const newTasks = tasks.map(task => {
     if(task.id == taskId) {
@@ -38,9 +55,8 @@ function onAddTaskSubmit (title, description) {
   setTasks([...tasks, newTask])
 }
 
-
   return (
-    <div className="w-screen h-screen bg-red-700 flex justify-center p-6">
+    <div className="w-[100%] h-[100%] bg-red-700 flex justify-center p-6">
       <div className="w-[500px] space-y-4"> 
         <h1 className="text-3xl font-extrabold text-center p-4 text-white">Gerenciador de Tarefas</h1>
         <AddTask onAddTaskSubmit={onAddTaskSubmit}/>
