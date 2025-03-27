@@ -21,7 +21,7 @@ function AddTask({onAddTaskSubmit}) {
                 setTitle("");
                 setDescription("");
             }
-        } className="bg-red-700 p-2 text-white rounded-md font-medium">Adicionar</button>
+        } className="bg-red-700 p-2 text-white rounded-md font-medium cursor-pointer">Adicionar</button>
     </div>
     );
 }
