@@ -56,7 +56,7 @@ function onAddTaskSubmit (title, description) {
 }
 
   return (
-    <div className="w-[100%] h-[100%] bg-red-700 flex justify-center p-6">
+    <div className="w-[100%] h-[100vh] bg-red-700 flex justify-center p-6">
       <div className="w-[500px] space-y-4"> 
         <h1 className="text-3xl font-extrabold text-center p-4 text-white">Gerenciador de Tarefas</h1>
         <AddTask onAddTaskSubmit={onAddTaskSubmit}/>
